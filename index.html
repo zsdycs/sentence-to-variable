@@ -1,4 +1,8 @@
-<!-- 作者：zsdycs，主页：https://lipk.org，仓库：https://github.com/zsdycs/sentence-to-variable -->
+<!-- 
+    作者：https://github.com/zsdycs，
+    主页：https://lipk.org，
+    仓库：https://github.com/zsdycs/sentence-to-variable
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -52,15 +56,15 @@
                     subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1));
                     continue;
                 }
-                subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1));
+                subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase());
             } else if (mode === 'big-hump') {
-                subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1));
+                subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase());
             } else if (mode === 'kebab-case') {
                 if (i === 0) {
-                    subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1));
+                    subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase());
                     continue;
                 }
-                subArr.push(`-${arr[i].charAt(0).toLowerCase() + arr[i].substring(1)}`);
+                subArr.push(`-${arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()}`);
             }
         }
         elTextArea.value = subArr.join('');
