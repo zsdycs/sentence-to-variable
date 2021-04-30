@@ -8,6 +8,9 @@ get value name，
 Get Value Name，
 GET VALUE NAME。
 
-转为小驼峰，例：getValueName。  
-转为大驼峰，例：GetValueName。  
-转为短横线，例：get-value-name。
+转为小驼峰，例：getValueName。<br />
+转为大驼峰，例：GetValueName。<br />
+转为小短横线，例：get-value-name。<br />
+转为大短横线，例：Get-value-name。<br />
+转为小下划线，例：get_value_name。<br />
+转为大下划线，例：Get_value_name。<br />
