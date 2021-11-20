@@ -6,189 +6,232 @@
 -->
 <!DOCTYPE html>
 <html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="og:title" content="英文句子转变量">
-    <meta property="og:title" content="英文句子转变量">
-    <meta name="description"
-        content="英文句子转为变量，转小驼峰(BigCamelCase)，转大驼峰(SmallCamelCase)，转小短横线(SmallKebabCase)，转大短横线(GigKebabCase)，转下划线">
-    <meta property="og:description"
-        content="英文句子转为变量，转小驼峰(BigCamelCase)，转大驼峰(SmallCamelCase)，转小短横线(SmallKebabCase)，转大短横线(GigKebabCase)，转下划线">
-    <meta name="keywords" content="英文句子转变量, 英文变量, 转小驼峰，转大驼峰, 转短横线, 转下划线">
-    <meta property="keywords" content="英文句子转变量, 英文变量, 转小驼峰，转大驼峰, 转短横线, 转下划线">
-    <link rel="icon" type="image/x-icon" href="https://lipk.oss-accelerate.aliyuncs.com/images/transform.ico">
+    <meta name="og:title" content="英文句子转变量" />
+    <meta property="og:title" content="英文句子转变量" />
+    <meta
+      name="description"
+      content="英文句子转为变量，转小驼峰(BigCamelCase)，转大驼峰(SmallCamelCase)，转小短横线(SmallKebabCase)，转大短横线(GigKebabCase)，转下划线"
+    />
+    <meta
+      property="og:description"
+      content="英文句子转为变量，转小驼峰(BigCamelCase)，转大驼峰(SmallCamelCase)，转小短横线(SmallKebabCase)，转大短横线(GigKebabCase)，转下划线"
+    />
+    <meta
+      name="keywords"
+      content="英文句子转变量, 英文变量, 转小驼峰，转大驼峰, 转短横线, 转下划线"
+    />
+    <meta
+      property="keywords"
+      content="英文句子转变量, 英文变量, 转小驼峰，转大驼峰, 转短横线, 转下划线"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://lipk.oss-accelerate.aliyuncs.com/images/transform.ico"
+    />
     <title>英文句子转变量</title>
     <style>
-        body {
-            text-align: center;
-            padding-top: 100px;
-            background: url(https://lipk.oss-accelerate.aliyuncs.com/images/geometry.png) repeat;
-        }
+      body {
+        text-align: center;
+        padding-top: 100px;
+        background: url(https://lipk.oss-accelerate.aliyuncs.com/images/geometry.png)
+          repeat;
+      }
 
-        textarea {
-            padding: 10px
-        }
+      textarea {
+        padding: 10px;
+      }
 
-        .example {
-            font-size: 12px;
-        }
+      .example {
+        font-size: 12px;
+      }
 
-        #output {
-            color: forestgreen;
-        }
+      #output {
+        color: forestgreen;
+        width: 50%;
+        word-break: break-all;
+        margin: auto;
+      }
 
-        .btn-container {
-            width: 310px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
+      .btn-container {
+        width: 310px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
 
-        .btn-item {
-            padding: 16px;
-            text-align: left;
-            width: 120px;
-        }
+      .btn-item {
+        padding: 16px;
+        text-align: left;
+        width: 120px;
+      }
 
-        .copyright {
-            font-size: 12px;
-            position: absolute;
-            bottom: 0px;
-            left: 50%;
-            transform: translate(-50%);
-            padding: max(5px, env(safe-area-inset-bottom));
-        }
+      .copyright {
+        font-size: 12px;
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translate(-50%);
+        padding: max(5px, env(safe-area-inset-bottom));
+      }
 
-        .copyright a {
-            text-decoration: none;
-        }
+      .copyright a {
+        text-decoration: none;
+      }
 
-        .copyright a:hover {
-            color: #0366d6;
-            text-decoration: underline;
-        }
+      .copyright a:hover {
+        color: #0366d6;
+        text-decoration: underline;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h2>英文句子 → 变量</h2>
-    <textarea id="text-area" cols="40" rows="10"></textarea>
+    <textarea id="text-area" cols="40" rows="10" title="要转换的内容" placeholder="请输入要转换的内容"></textarea>
     <div id="output"></div>
     <div class="btn-container" id="container">
-        <div class="btn-item">
-            <button id="small-camel-case" type="button">复制为小驼峰</button>
-            <div class="example">例：<em>getValueName</em></div>
-        </div>
-        <div class="btn-item">
-            <button id="big-camel-case" type="button">复制为大驼峰</button>
-            <div class="example">例：<em>GetValueName</em></div>
-        </div>
-        <div class="btn-item">
-            <button id="small-kebab-case" type="button">复制为小短横线</button>
-            <div class="example">例：<em>get-value-name</em></div>
-        </div>
-        <div class="btn-item">
-            <button id="big-kebab-case" type="button">复制为大短横线</button>
-            <div class="example">例：<em>Get-value-name</em></div>
-        </div>
-        <div class="btn-item">
-            <button id="small-under-score-case" type="button">复制为小下划线</button>
-            <div class="example">例：<em>get_value_name</em></div>
-        </div>
-        <div class="btn-item">
-            <button id="big-under-score-case" type="button">复制为大下划线</button>
-            <div class="example">例：<em>Get_value_name</em></div>
-        </div>
+      <div class="btn-item">
+        <button id="small-camel-case" type="button">复制为小驼峰</button>
+        <div class="example">例：<em>getValueName</em></div>
+      </div>
+      <div class="btn-item">
+        <button id="big-camel-case" type="button">复制为大驼峰</button>
+        <div class="example">例：<em>GetValueName</em></div>
+      </div>
+      <div class="btn-item">
+        <button id="small-kebab-case" type="button">复制为小短横线</button>
+        <div class="example">例：<em>get-value-name</em></div>
+      </div>
+      <div class="btn-item">
+        <button id="big-kebab-case" type="button">复制为大短横线</button>
+        <div class="example">例：<em>Get-value-name</em></div>
+      </div>
+      <div class="btn-item">
+        <button id="small-under-score-case" type="button">
+          复制为小下划线
+        </button>
+        <div class="example">例：<em>get_value_name</em></div>
+      </div>
+      <div class="btn-item">
+        <button id="big-under-score-case" type="button">复制为大下划线</button>
+        <div class="example">例：<em>Get_value_name</em></div>
+      </div>
     </div>
     <footer>
-        <div class="copyright">
-            ©2021 <a href="https://github.com/zsdycs">ZSDYCS</a>
-        </div>
+      <div class="copyright">
+        ©2021 <a href="https://github.com/zsdycs">ZSDYCS</a>
+      </div>
     </footer>
-</body>
-<script>
-    var container = document.querySelector('#container');
-    var textArea = document.querySelector('#text-area');
+  </body>
+  <script>
+    const container = document.querySelector("#container");
+    const textArea = document.querySelector("#text-area");
 
-    container.addEventListener('click', function ($event) {
-        if ($event.target.nodeName === 'BUTTON' && $event.target.id) {
-            copyTextToClipboard(textArea.value, $event.target.id);
-        }
+    container.addEventListener("click", ($event) => {
+      if ($event.target.nodeName === "BUTTON" && $event.target.id) {
+        copyTextToClipboard(textArea.value, $event.target.id);
+      }
     });
 
-    function copyTextToClipboard(value, mode) {
-        var elTextArea = document.createElement('textarea');
-        if (value.length === 0) {
-            document.getElementById('output').innerHTML = `没有内容`;
-            return;
-        } else if (value.indexOf(' ') === -1) {
-            document.getElementById('output').innerHTML = `内容：「${value}」，不是句子。`;
-            return;
+    const copyTextToClipboard = (value, mode) => {
+      const elTextArea = document.createElement("textarea");
+      if (value.length === 0) {
+        document.getElementById("output").innerHTML = `没有内容`;
+        return;
+      }
+      const arr = value.replace(/[^\w\s]|_/g, " ").replace(/\s+/g, " ").split(" ");
+      const subArr = [];
+      for (let i = 0; i < arr.length; i++) {
+        if (!arr[i]) {
+          continue;
         }
-        var arr = value.split(' ');
-        var subArr = [];
-        for (var i = 0; i < arr.length; i++) {
-            if (!arr[i]) {
-                continue;
-            }
-            switch (mode) {
-                case 'small-camel-case':
-                    if (i === 0) {
-                        subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1));
-                        continue;
-                    }
-                    subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase());
-                    break;
-                case 'big-camel-case':
-                    subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase());
-                    break;
-                case 'small-kebab-case':
-                    if (i === 0) {
-                        subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase());
-                        continue;
-                    }
-                    subArr.push(`-${arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()}`);
-                    break;
-                case 'big-kebab-case':
-                    if (i === 0) {
-                        subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase());
-                        continue;
-                    }
-                    subArr.push(`-${arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()}`);
-                    break;
-                case 'small-under-score-case':
-                    if (i === 0) {
-                        subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase());
-                        continue;
-                    }
-                    subArr.push(`_${arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()}`);
-                    break;
-                case 'big-under-score-case':
-                    if (i === 0) {
-                        subArr.push(arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase());
-                        continue;
-                    }
-                    subArr.push(`_${arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()}`);
-                    break;
-                default:
-                    break;
-            }
-        }
-        elTextArea.value = subArr.join('');
-        document.body.appendChild(elTextArea);
-        elTextArea.select();
-        try {
-            document.execCommand('copy');
-        } catch (err) {
-            console.error(err);
-        }
-        document.body.removeChild(elTextArea);
-        document.getElementById('output').innerHTML = `已复制：${elTextArea.value}`;
-    }
-</script>
 
+        if (mode === "small-camel-case") {
+          // 复制为小驼峰
+          if (i === 0) {
+            subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1));
+            continue;
+          }
+          subArr.push(
+            arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
+          );
+        } else if (mode === "big-camel-case") {
+          // 复制为大驼峰
+          subArr.push(
+            arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
+          );
+        } else if (mode === "small-kebab-case") {
+          // 复制为小短横线
+          if (i === 0) {
+            subArr.push(
+              arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            );
+            continue;
+          }
+          subArr.push(
+            `-${
+              arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            }`
+          );
+        } else if (mode === "big-kebab-case") {
+          // 复制为大短横线
+          if (i === 0) {
+            subArr.push(
+              arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
+            );
+            continue;
+          }
+          subArr.push(
+            `-${
+              arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            }`
+          );
+        } else if (mode === "small-under-score-case") {
+          // 复制为小下划线
+          if (i === 0) {
+            subArr.push(
+              arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            );
+            continue;
+          }
+          subArr.push(
+            `_${
+              arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            }`
+          );
+        } else if (mode === "big-under-score-case") {
+          // 复制为大下划线
+          if (i === 0) {
+            subArr.push(
+              arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
+            );
+            continue;
+          }
+          subArr.push(
+            `_${
+              arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            }`
+          );
+        }
+      }
+      elTextArea.value = subArr.join("");
+      document.body.appendChild(elTextArea);
+      elTextArea.select();
+      try {
+        document.execCommand("copy");
+      } catch (err) {
+        alert(err)
+      }
+      document.body.removeChild(elTextArea);
+      document.getElementById(
+        "output"
+      ).innerHTML = `已复制：${elTextArea.value}`;
+    };
+  </script>
 </html>
