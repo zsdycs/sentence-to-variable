@@ -58,7 +58,7 @@
       }
 
       .btn-container {
-        width: 310px;
+        width: 500px;
         margin: auto;
         display: flex;
         flex-wrap: wrap;
@@ -67,8 +67,8 @@
 
       .btn-item {
         padding: 16px;
-        text-align: left;
-        width: 120px;
+        text-align: center;
+        width: 180px;
       }
 
       .copyright {
@@ -93,34 +93,40 @@
 
   <body>
     <h2>英文句子 → 变量</h2>
-    <textarea id="text-area" cols="40" rows="10" title="要转换的内容" placeholder="请输入要转换的内容"></textarea>
+    <textarea id="text-area" cols="40" rows="10" title="要转换的英文句子" placeholder="请输入要转换的英文句子"></textarea>
     <div id="output"></div>
     <div class="btn-container" id="container">
       <div class="btn-item">
         <button id="small-camel-case" type="button">复制为小驼峰</button>
-        <div class="example">例：<em>getValueName</em></div>
+        <div class="example">例：<strong>getValueName</strong></div>
       </div>
       <div class="btn-item">
         <button id="big-camel-case" type="button">复制为大驼峰</button>
-        <div class="example">例：<em>GetValueName</em></div>
+        <div class="example">例：<strong>GetValueName</strong></div>
       </div>
       <div class="btn-item">
         <button id="small-kebab-case" type="button">复制为小短横线</button>
-        <div class="example">例：<em>get-value-name</em></div>
+        <div class="example">例：<strong>get-value-name</strong></div>
       </div>
       <div class="btn-item">
         <button id="big-kebab-case" type="button">复制为大短横线</button>
-        <div class="example">例：<em>Get-value-name</em></div>
+        <div class="example">例：<strong>Get-value-name</strong></div>
       </div>
       <div class="btn-item">
-        <button id="small-under-score-case" type="button">
-          复制为小下划线
-        </button>
-        <div class="example">例：<em>get_value_name</em></div>
+        <button id="small-under-score-case" type="button">复制为小下划线</button>
+        <div class="example">例：<strong>get_value_name</strong></div>
       </div>
       <div class="btn-item">
         <button id="big-under-score-case" type="button">复制为大下划线</button>
-        <div class="example">例：<em>Get_value_name</em></div>
+        <div class="example">例：<strong>Get_value_name</strong></div>
+      </div>
+      <div class="btn-item">
+        <button id="all-big-kebab-case" type="button">复制为全大写短横线</button>
+        <div class="example">例：<strong>GET-VALUE-NAME</strong></div>
+      </div>
+      <div class="btn-item">
+        <button id="all-big-under-score-case" type="button">复制为全大写下划线</button>
+        <div class="example">例：<strong>GET_VALUE_NAME</strong></div>
       </div>
     </div>
     <footer>
@@ -153,7 +159,7 @@
         }
 
         if (mode === "small-camel-case") {
-          // 复制为小驼峰
+          // 复制为小驼峰 getValueName
           if (i === 0) {
             subArr.push(arr[i].charAt(0).toLowerCase() + arr[i].substring(1));
             continue;
@@ -162,12 +168,12 @@
             arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
           );
         } else if (mode === "big-camel-case") {
-          // 复制为大驼峰
+          // 复制为大驼峰 GetValueName
           subArr.push(
             arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
           );
         } else if (mode === "small-kebab-case") {
-          // 复制为小短横线
+          // 复制为小短横线 get-value-name
           if (i === 0) {
             subArr.push(
               arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
@@ -180,7 +186,7 @@
             }`
           );
         } else if (mode === "big-kebab-case") {
-          // 复制为大短横线
+          // 复制为大短横线 Get-value-name
           if (i === 0) {
             subArr.push(
               arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
@@ -193,7 +199,7 @@
             }`
           );
         } else if (mode === "small-under-score-case") {
-          // 复制为小下划线
+          // 复制为小下划线 get_value_name
           if (i === 0) {
             subArr.push(
               arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
@@ -206,7 +212,7 @@
             }`
           );
         } else if (mode === "big-under-score-case") {
-          // 复制为大下划线
+          // 复制为大下划线 Get_value_name
           if (i === 0) {
             subArr.push(
               arr[i].charAt(0).toUpperCase() + arr[i].substring(1).toLowerCase()
@@ -216,6 +222,32 @@
           subArr.push(
             `_${
               arr[i].charAt(0).toLowerCase() + arr[i].substring(1).toLowerCase()
+            }`
+          );
+        } else if (mode === "all-big-kebab-case") {
+          // 复制为全大写短横线 GET-VALUE-NAME
+          if (i === 0) {
+            subArr.push(
+              arr[i].toUpperCase()
+            );
+            continue;
+          }
+          subArr.push(
+            `-${
+              arr[i].toUpperCase()
+            }`
+          );
+        } else if (mode === "all-big-under-score-case") {
+          // 复制为全大写下划线 GET_VALUE_NAME
+          if (i === 0) {
+            subArr.push(
+              arr[i].toUpperCase()
+            );
+            continue;
+          }
+          subArr.push(
+            `_${
+              arr[i].toUpperCase()
             }`
           );
         }

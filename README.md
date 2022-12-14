@@ -14,3 +14,5 @@ GET VALUE NAME。
 转为大短横线，例：Get-value-name。<br />
 转为小下划线，例：get_value_name。<br />
 转为大下划线，例：Get_value_name。<br />
+转为全大写短横线，例：GET-VALUE-NAME。<br />
+转为全大写下划线，例：GET_VALUE_NAME。<br />
